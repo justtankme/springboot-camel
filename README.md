@@ -1,8 +1,9 @@
 # camel一些好玩的特性
 ## 20180206
 ### 测试multicast和wiretap的区别：
-multicast的作用是并行执行多个to（每个to都是一个新的exchange），然后通过aggregate参数指定exchange的合并规则，等所有的to都执行完成后主线程才会终止。
-wiretap的作用是创建一个inOnly的exchange给新线程使用，主线程继续执行并且不再关心新线程。
+访问路径：http://localhost:8080/camel/wiretaptest   http://localhost:8080/camel/multicasttest
+1、multicast的作用是并行执行多个to（每个to都是一个新的exchange），然后通过aggregate参数指定exchange的合并规则，等所有的to都执行完成后主线程才会终止。
+2、wiretap的作用是创建一个inOnly的exchange给新线程使用，主线程继续执行并且不再关心新线程。
 以如下场景为例：
 servlet-->routA（立即响应给请求方）-->routeB（执行一个长时间的操作，并且操作结果不需要通知请求方）
 如果使用multicast（见MulticastTest）会导致请求响应超时，使用wiretap（见WireTapTest）则满足需求。
