@@ -1,15 +1,16 @@
-package multicastandwiretap;
+package com.tank.camelspringboot.multicastandwiretap;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 @Component
-public class QuickThread extends RouteBuilder {
+public class DoNothingThread extends RouteBuilder {
     /* (non-Javadoc)
      * @see org.apache.camel.builder.RouteBuilder#configure()
      */
     @Override
     public void configure() throws Exception {
-		from("direct:quickthread")
-        .to("log:quickthread?showAll=true&multiline=true");
+		from("direct:donothing")
+        .process(new EndProcessor())
+        .to("log:donothing?showAll=true&multiline=true");
     }
 }

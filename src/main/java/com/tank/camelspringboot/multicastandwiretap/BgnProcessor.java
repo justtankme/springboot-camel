@@ -1,4 +1,4 @@
-package multicastandwiretap;
+package com.tank.camelspringboot.multicastandwiretap;
 
 import java.time.Instant;
 

@@ -1,4 +1,4 @@
-package multicastandwiretap;
+package com.tank.camelspringboot.multicastandwiretap;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.processor.aggregate.AggregationStrategy;

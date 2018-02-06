@@ -3,8 +3,8 @@ package camelspringboot;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.model.ModelCamelContext;
 
-import multicastandwiretap.QuickThread;
-import multicastandwiretap.WireTapTest;
+import com.tank.camelspringboot.multicastandwiretap.QuickThread;
+import com.tank.camelspringboot.multicastandwiretap.WireTapTest;
 
 public class DirectTest {
 	    public static void main(String[] args) throws Exception {

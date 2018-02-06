@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package multicastandwiretap;
+package com.tank.camelspringboot;
 
 import org.apache.camel.component.servlet.CamelHttpTransportServlet;
 import org.apache.camel.spring.SpringCamelContext;
@@ -23,6 +23,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+
+import com.tank.camelspringboot.multicastandwiretap.DoNothingThread;
+import com.tank.camelspringboot.multicastandwiretap.LongThread;
+import com.tank.camelspringboot.multicastandwiretap.MulticastTest;
+import com.tank.camelspringboot.multicastandwiretap.QuickThread;
+import com.tank.camelspringboot.multicastandwiretap.WireTapTest;
 
 /**
  * A sample Spring Boot application that starts the Camel routes.
