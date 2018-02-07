@@ -4,7 +4,7 @@
 
 ## springboot与camel
 ### 关于properties
-在camel-spring-boot-xxx.jar中可以看到/META-INF/spring-configuration-metadata.json和/META-INF/additional-spring-configuration-metadata.json,这里面记录的就是所有的可配置参数。
+在camel-spring-boot-xxx.jar、camel-core-starter-xxx.jar、camel-xxx-starter-xxx.jar中可以看到/META-INF/spring-configuration-metadata.json和/META-INF/additional-spring-configuration-metadata.json，这里面记录的就是所有的可配置参数。
 
 ## 20180206
 ### 测试multicast和wiretap的区别：
@@ -39,7 +39,9 @@
 #### 解决servlet型路由processor中使用`exchange.getIn().setBody(time, TimeDTO.class)`导致Stream closed的问题
 在所有的路由最后增加`.convertBodyTo(String.class, "utf-8")`即可（见MulticastTest），个人猜测是camel没办法将自定义的pojo类转换成outputstream。
 #### 解决to路由指向http接口时`java.lang.IllegalArgumentException: Invalid uri: /services.If you are forwarding/bridging http endpoints, then enable the bridgeEndpoin`的错误
-参考<https://stackoverflow.com/questions/12058479/camel-route-from-jetty-to-absolute-url>。
+参考
+
+<https://stackoverflow.com/questions/12058479/camel-route-from-jetty-to-absolute-url>
 
 在http地址后面加上`?bridgeEndpoint=true`即可。
 
@@ -50,6 +52,16 @@
 	        .to("log:afterhttp?showAll=true&multiline=true");
 
 #### 处理路由中的异常
+参考资料：
+
+<http://camel.apache.org/error-handling-in-camel.html>
+
+<http://camel.apache.org/error-handler.html>
+
+<http://camel.apache.org/defaulterrorhandler.html>
+
+<http://camel.apache.org/try-catch-finally.html>
+
 `We can add an onException in case we want to catch certain exceptions and route them differently, for instance to catch a ValidationException and return a fixed response to the caller.`
 
 通过指定要捕获的异常类名、捕获异常后的处理processor即可完成异常处理。见`TimeOutRoute`
