@@ -16,47 +16,36 @@
  */
 package com.tank.camelspringboot;
 
-import org.apache.camel.component.servlet.CamelHttpTransportServlet;
-import org.apache.camel.spring.SpringCamelContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-
-import com.tank.camelspringboot.multicastandwiretap.DoNothingThread;
-import com.tank.camelspringboot.multicastandwiretap.LongThread;
-import com.tank.camelspringboot.multicastandwiretap.MulticastTest;
-import com.tank.camelspringboot.multicastandwiretap.QuickThread;
-import com.tank.camelspringboot.multicastandwiretap.WireTapTest;
 
 /**
  * A sample Spring Boot application that starts the Camel routes.
  */
 @SpringBootApplication
 public class SampleCamelApplication {
-    private static final String CAMEL_URL_MAPPING = "/camel/*";
-    private static final String CAMEL_SERVLET_NAME = "CamelServlet";
+//    private static final String CAMEL_URL_MAPPING = "/camel/*";
+//    private static final String CAMEL_SERVLET_NAME = "CamelServlet";
 
     public static void main(String[] args) {
         SpringApplication.run(SampleCamelApplication.class, args);
     }
-    @Bean
-    public ServletRegistrationBean servletRegistrationBean() {
-        ServletRegistrationBean registration = new ServletRegistrationBean(new CamelHttpTransportServlet(), CAMEL_URL_MAPPING);
-        registration.setName(CAMEL_SERVLET_NAME);
-        return registration;
-    }
-
-    @Bean
-    public SpringCamelContext camelContext(ApplicationContext applicationContext) throws Exception {
-        SpringCamelContext camelContext = new SpringCamelContext(applicationContext);
-        camelContext.addRoutes(new WireTapTest());
-        camelContext.addRoutes(new MulticastTest());
-        camelContext.addRoutes(new QuickThread());
-        camelContext.addRoutes(new LongThread());
-        camelContext.addRoutes(new DoNothingThread());
-        return camelContext;
-    }
+//    @Bean
+//    public ServletRegistrationBean servletRegistrationBean() {
+//        ServletRegistrationBean registration = new ServletRegistrationBean(new CamelHttpTransportServlet(), CAMEL_URL_MAPPING);
+//        registration.setName(CAMEL_SERVLET_NAME);
+//        return registration;
+//    }
+//
+//    @Bean
+//    public SpringCamelContext camelContext(ApplicationContext applicationContext) throws Exception {
+//        SpringCamelContext camelContext = new SpringCamelContext(applicationContext);
+//        camelContext.addRoutes(new WireTapTest());
+//        camelContext.addRoutes(new MulticastTest());
+//        camelContext.addRoutes(new QuickThread());
+//        camelContext.addRoutes(new LongThread());
+//        camelContext.addRoutes(new DoNothingThread());
+//        return camelContext;
+//    }
 
 }
