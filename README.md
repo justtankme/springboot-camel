@@ -69,6 +69,12 @@
 通过指定要捕获的异常类名、捕获异常后的处理processor即可完成异常处理。见`TimeOutRoute`
 
 	onException(SocketTimeoutException.class).handled(true).process(new SocketTimeoutProcessor());
+
+如果在异常发生后想要继续之后的路由路线则需要使用`continued`
+	
+关于`handled`和`continued`的关系见<http://camel.apache.org/exception-clause.html>
+
+	OnExceptionDefinition exception = routeDefinition.onException(SocketTimeoutException.class).continued(true).process(processor);
 	
 	
 	

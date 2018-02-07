@@ -25,11 +25,12 @@ public class TimeOutRoute extends RouteBuilder{
 //		errorHandlerBuilder.
 //		errorHandler(errorHandlerBuilder);
 //		Processor onExceptionOccurred;
-		onException(SocketTimeoutException.class).handled(true).process(new SocketTimeoutProcessor());
+		onException(SocketTimeoutException.class).continued(true).process(new SocketTimeoutProcessor());
 		from("servlet://timeout")
         .to("log:beforehttp?showAll=true&multiline=true")
         .setHeader("CamelHttpMethod", constant("GET"))
 		.to("http4://localhost:8080/timeout2?bridgeEndpoint=true&throwExceptionOnFailure=false&httpClient.socketTimeout=5000")
+		.process(new ContinueMaySkipProcessor())
         .convertBodyTo(String.class, "utf-8")
         .to("log:afterhttp?showAll=true&multiline=true")
 //        .onException(SocketTimeoutException.class)
