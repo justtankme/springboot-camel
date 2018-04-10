@@ -7,6 +7,8 @@
 在camel-spring-boot-xxx.jar、camel-core-starter-xxx.jar、camel-xxx-starter-xxx.jar中可以看到/META-INF/spring-configuration-metadata.json和/META-INF/additional-spring-configuration-metadata.json，这里面记录的就是所有的可配置参数。
 
 ### 场景、问题、方案
+#### when中使用bean方法判断路由走向
+见 `com.tank.camelspringboot.beanmethod.BeanMethodTest`。使用Java类的方法作为choice when的判断条件。
 #### 使用springboot配置属性设置camel servlet路径
 例如有如下路由：
 	
